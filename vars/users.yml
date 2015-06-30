@@ -1,0 +1,16 @@
+---
+#
+users:
+  sysadmin:
+    - name: 'rgrp'
+      group: 'sysadmin'
+      authorized_keys:
+        - rgrp
+    - name: 'okfn'
+      group: 'sysadmin'
+      authorized_keys:
+        - nigelb
+    - name: 'nigelb'
+      group: 'sysadmin'
+      authorized_keys:
+        - nigelb

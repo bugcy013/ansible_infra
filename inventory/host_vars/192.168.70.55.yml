@@ -1,0 +1,9 @@
+---
+sudo_extra_lines:
+  - 'deploy ALL=(ALL) NOPASSWD: /usr/bin/service apache2 *'
+
+backup_postgres: true
+backup_scripts:
+   - psql_backup.sh
+custom_iptables_rules:
+   - "-A INPUT -j DROP -p tcp --destination-port 8080 --destination 88.80.190.91/32"
