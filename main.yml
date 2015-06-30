@@ -1,52 +1,14 @@
 #ansible-playbook main.yml --tags="base-roles" -vvv
 ---
-- hosts: all
+- hosts: TestCentos
+  remote_user: ansible
+  gather_facts: yes
   sudo: true
   vars:
      - private_dir: ../../credentials/ansible
   vars_files:
     - vars/users.yml
-    - "{{ private_dir }}/p.yml"
+#    - "{{ private_dir }}/p.yml"
   roles:
-    - { role: check-mk-agent, tags: ['check-mk-agent'] }
-    - { role: collectd, tags: ['collectd'] }
-    - { role: cron, tags: ['cron'] }
-    - { role: iptables-persistent, tags: ['iptables-persistent'] }
-    - { role: motd, tags: ['motd'] }
-    - { role: nagios-client, tags: ['nagios-client'] }
-    - postfix
-    - { role: knopki.timezone, tags: ['time'] }
-    - { role: bennojoy.ntp, tags: ['time'] }
-    - { role: update-notifier, tags: ['update-notifier'] }
-    - { role: users, tags: ['users'] }
-    - { role: sudo , tags: ['sudo'] }
-    - { role: db-backup, tags: ['db-backup'] }
-    - { role: apt-mirror-config, tags: ['apt-mirror-config'] }
-    - { role: unattended-upgrades, tags: ['unattended-upgrades'] }
-    - { role: apt, tags: ['git'], pkg_list: ['git'] }
-    - { role: apt, tags: ['sysstat'], pkg_list: ['sysstat'] }
-    - { role: sshd, tags: ['sshd'] }
-    - { role: fail2ban, tags: ['fail2ban'] }
-
-
-- hosts: rt
-  sudo: true
-  vars:
-     - private_dir: ../../credentials/ansible
-  vars_files:
-    - "{{ private_dir }}/p.yml"
-  roles:
-    - { role: rt, tags: ['rt'] }
-    - { role: postfix, tags: ['postfix'] }
-    - { role: nginx, tags: ['nginx'] }
-    - { role: supervisor, tags: ['supervisor'] }
-
-
-- hosts: openspending-web
-  sudo: true
-  vars:
-     - private_dir: ../../credentials/ansible
-  vars_files:
-    - "{{ private_dir }}/p.yml"
-  roles:
-    - { role: nginx, tags: ['nginx'] }
+    - { role: ansible-role-ntp }
+#    - { role: ansible-role-ntp, tags: ['nginx'] }

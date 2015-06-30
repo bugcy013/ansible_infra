@@ -1,5 +1,5 @@
-[monitoring]
-s117.okserver.org hosted=aws
+[TestCentos]
+192.168.70.55 hosted=Weehawken
 
-[docker-host]
-s125.okserver.org hosted=aws
+[TestUbuntu]
+192.168.70.56 hosted=Delawanna
