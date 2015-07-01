@@ -11,4 +11,4 @@
 #    - "{{ private_dir }}/p.yml"
   roles:
     - { role: ansible-role-ntp }
-#    - { role: ansible-role-ntp, tags: ['nginx'] }
+    - { role: ansible-sysctl, tags: ['sysctl'] }
