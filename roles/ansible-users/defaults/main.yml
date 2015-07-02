@@ -1,0 +1,22 @@
+---
+# Create a group for every user and make that their primary group
+users_create_per_user_group: true
+# If we're not creating a per-user group, then this is the group all users
+# belong to
+users_group: users
+# The default shell for a user if none is specified
+users_default_shell: /bin/bash
+# Create home dirs for new users? Set this to false if you manage home
+# directories in some other way.
+users_create_homedirs: true
+
+# Lists of users to create and delete
+users: []
+users_deleted: []
+groups_to_create: []
+
+ROOT_HASH: $6$rounds=100000$3FQYlLwKpmDrrkrI$K87tfgDvR1Vg0hNrfIZFdb/qD4HSIAEndr.UeW5Shbmz3s2srXP3QoB1bRtr4EQb5of7FTY/a4Q..4QC3S4Nh1
+#➜  ansible-users git:(master) ✗ python -c "from passlib.hash import sha512_crypt; import getpass; print sha512_crypt.encrypt(getpass.getpass())"
+#Password: 
+#$6$rounds=100000$3FQYlLwKpmDrrkrI$K87tfgDvR1Vg0hNrfIZFdb/qD4HSIAEndr.UeW5Shbmz3s2srXP3QoB1bRtr4EQb5of7FTY/a4Q..4QC3S4Nh1
+#➜  ansible-users git:(master) ✗

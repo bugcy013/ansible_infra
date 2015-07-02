@@ -1,4 +1,5 @@
 ---
+# http://docs.ansible.com/sysctl_module.html
 # defaults file for sysctl
 sysctl_rules:
   kernel.panic: 10

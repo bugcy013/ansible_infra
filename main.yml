@@ -12,3 +12,5 @@
   roles:
     - { role: ansible-role-ntp }
     - { role: ansible-sysctl, tags: ['sysctl'] }
+    #- { role: ansible-users, tags: ['updatepassword'] }
+    - { role: ansible-motd }

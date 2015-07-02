@@ -1,0 +1,19 @@
+---
+# tasks file for __template__
+- name: distribute motd file for CentOS
+  template: src=ce-motd.j2
+            dest=/etc/motd
+            owner=root
+            group=root
+            mode=0644
+  when: ansible_distribution == 'CentOS'
+
+- name: distribute motd file for ubuntu distro.
+  template: src=ub-motd.j2
+            dest=/etc/motd
+            owner=root
+            group=root
+            mode=0644
+  when: ansible_distribution == 'Ubuntu'
+
+
