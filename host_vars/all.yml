@@ -1,0 +1,7 @@
+users:
+ dev:
+  name: dev
+  groups: ['dev']
+  uid: 2001
+  ssh_key:
+    - "ssh-rsa AAAA.....ZZZZ"

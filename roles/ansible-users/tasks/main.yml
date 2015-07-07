@@ -40,7 +40,3 @@
   with_items: users_deleted
   when: users_create_per_user_group
   tags: ['users','configuration']
-
-- name:  Change root password
-  user: name=root update_password=always password={{ ROOT_HASH }}
-  tags: ['updatepassword']

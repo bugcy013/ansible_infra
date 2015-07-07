@@ -1,6 +1,9 @@
 ---
 # tasks file for sysctl
 
+# create a directory if it doesn't exist
+- file: path=/tempCoreDump/ state=directory mode=0777
+
 - name: set sysctl rules
   sysctl: name={{ item.key }} value={{ item.value }}
   with_dict: sysctl_rules

@@ -4,13 +4,19 @@ users:
   sysadmin:
     - name: 'rgrp'
       group: 'sysadmin'
+      uid: 1010
+      shell: /bin/zsh
       authorized_keys:
-        - rgrp
+       - deepvalue
     - name: 'okfn'
       group: 'sysadmin'
+      shell: /bin/bash
+      uid: 1002
       authorized_keys:
-        - nigelb
+       - deepvalue
     - name: 'nigelb'
       group: 'sysadmin'
+      shell: /bin/bash
+      uid: 1003
       authorized_keys:
-        - nigelb
+       - deepvalue

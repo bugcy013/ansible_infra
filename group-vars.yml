@@ -17,5 +17,7 @@
 #    - { role: ansible-apt, pkg_list: ['git'] }
 #    - { role: ansible-yum, pkg_list: ['sysstat'] }
 #    - { role: cron, tags: ['backups_to_s3_cron'] }
-    - { role: users }
+#    - { role: ansible-users }
+  tasks:
+   - debug: msg="reading from  {{ env_name }}"
 

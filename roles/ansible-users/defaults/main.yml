@@ -14,9 +14,3 @@ users_create_homedirs: true
 users: []
 users_deleted: []
 groups_to_create: []
-
-ROOT_HASH: $6$rounds=100000$3FQYlLwKpmDrrkrI$K87tfgDvR1Vg0hNrfIZFdb/qD4HSIAEndr.UeW5Shbmz3s2srXP3QoB1bRtr4EQb5of7FTY/a4Q..4QC3S4Nh1
-#➜  ansible-users git:(master) ✗ python -c "from passlib.hash import sha512_crypt; import getpass; print sha512_crypt.encrypt(getpass.getpass())"
-#Password: 
-#$6$rounds=100000$3FQYlLwKpmDrrkrI$K87tfgDvR1Vg0hNrfIZFdb/qD4HSIAEndr.UeW5Shbmz3s2srXP3QoB1bRtr4EQb5of7FTY/a4Q..4QC3S4Nh1
-#➜  ansible-users git:(master) ✗

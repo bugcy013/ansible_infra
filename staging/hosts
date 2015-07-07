@@ -1,0 +1,5 @@
+[TestCentos]
+192.168.70.55 hosted=Weehawken
+
+[TestUbuntu]
+192.168.70.56 hosted=Delawanna

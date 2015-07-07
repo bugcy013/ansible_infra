@@ -34,3 +34,9 @@ sudo_extra_lines: []
 postgres_port: 5432
 solr_port: 8983
 sshd_PasswordAuthentication: No
+env_name: staging
+
+# override this var to add a prefix to the prompt
+# also need to set comment_update_bashrc for to
+# update the system bashrc default
+USER_CMD_PROMPT: ""

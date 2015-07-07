@@ -1,0 +1,7 @@
+---
+- name: apt_install
+  apt: pkg={{ item }} state=installed update_cache=yes
+  when: pkg_list is defined and ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  with_items: pkg_list
+  tags:
+     - apt

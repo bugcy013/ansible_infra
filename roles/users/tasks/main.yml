@@ -1,0 +1,56 @@
+---
+
+- name: Add groups
+  group: name={{ item }} state=present
+  with_items:
+    - sysadmin
+
+- name: Add user groups
+  group: name={{ item.group | default(item.name) }} state=present
+  with_flattened:
+    - users.sysadmin
+
+- name: Add users
+  user: name={{ item.name }} uid={{ item.uid }} group='{{ item.group | default(item.name) }}'
+        groups='{{ item.groups | default([]) | join(",") }}'
+        state=present
+        shell=/bin/bash
+  with_flattened:
+    - users.sysadmin
+
+# NB: although user's authorized_keys property is a list, only the first key in
+# the list is currently managed.
+#
+# This is a temporary hack until I can get the users vars set up the way I'd
+# like them (i.e. with the list of named users only defined once and then the
+# list of users that should be present in group_vars/host_vars rather than the
+# current arrangement with duplicated users.
+- name: Add user SSH keys
+  authorized_key:
+   user={{ item.name }}
+   key="{{ lookup('file', inventory_dir + '/files/keys/' + item.authorized_keys[0] + '.pub') }}"
+   state=present
+   exclusive=yes
+  with_flattened:
+    - users.sysadmin
+
+- name: Purging old users
+  user: name={{ item }} state=absent
+  with_items: users_purge
+  tags: purge_users
+
+- name: create bashrc file for normal users
+  template: >
+    src=default.bashrc.j2
+    dest=/home/{{ item.name }}/.bashrc mode=0640
+    owner={{ item.name }}
+  when: not (item.type is defined and item.type == 'restricted') and item.get('state', 'present') == 'present'
+  with_flattened: users.sysadmin
+
+- name: create .profile for all users
+  template: >
+    src=default.profile.j2
+    dest=/home/{{ item.name }}/.profile mode=0640
+    owner={{ item.name }}
+  when: item.get('state', 'present') == 'present'
+  with_flattened: users.sysadmin
